@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.devtides.stackoverflowquery.R
 import com.devtides.stackoverflowquery.viewmodel.QuestionsViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -25,11 +26,22 @@ class MainActivity : AppCompatActivity() {
         questions_list.apply {
             layoutManager = lm
             adapter = questionsAdapter
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    if (dy > 0) {
+                        val childCount = questionsAdapter.itemCount
+                        val lastChildren = lm.findLastCompletelyVisibleItemPosition()
+                        if (childCount - 1 == lastChildren && loading_view.visibility == View.GONE) {
+                            viewModel.getNextPage()
+                        }
+                    }
+                }
+            })
         }
 
         observeViewModel()
 
-        viewModel.getQuestions()
+        viewModel.getNextPage()
     }
 
 

@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.devtides.stackoverflowquery.R
 import com.devtides.stackoverflowquery.model.Question
+import com.devtides.stackoverflowquery.model.convertTitle
 import kotlinx.android.synthetic.main.question_layout.view.*
 
 class QuestionsAdapter(val questions: ArrayList<Question>): RecyclerView.Adapter<QuestionsAdapter.AdapterViewHolder>() {
@@ -32,10 +33,12 @@ class QuestionsAdapter(val questions: ArrayList<Question>): RecyclerView.Adapter
         holder.bind(questions[position])
     }
 
+
+
     class AdapterViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val title = view.item_title
         fun bind(question: Question) {
-            title.text = question.title
+            title.text = convertTitle(question.title)
         }
     }
 
