@@ -36,7 +36,6 @@ class QuestionsAdapter(val questions: ArrayList<Question>, val listener: Questio
     }
 
 
-
     class AdapterViewHolder(view: View,val listener: QuestionClickListener): RecyclerView.ViewHolder(view) {
         val layout = view.item_layout
         val title = view.item_title
@@ -46,7 +45,6 @@ class QuestionsAdapter(val questions: ArrayList<Question>, val listener: Questio
             title.text = convertTitle(question.title)
             score.text = question.score
             date.text = getDate(question.date)
-
             layout.setOnClickListener { listener.onQuestionClicked(question) }
         }
     }
