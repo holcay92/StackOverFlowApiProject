@@ -42,6 +42,13 @@ class MainActivity : AppCompatActivity() {
         observeViewModel()
 
         viewModel.getNextPage()
+
+        swipe_layout.setOnRefreshListener {
+            questionsAdapter.clearQuestions()
+            viewModel.getFirstPage()
+            loading_view.visibility = View.VISIBLE
+            questions_list.visibility = View.GONE
+        }
     }
 
 
@@ -49,6 +56,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.questionsResponse.observe(this, Observer { items ->
             items?.let {
                 questions_list.visibility = View.VISIBLE
+                swipe_layout.isRefreshing = false
                 questionsAdapter.addQuestions(it)
             }
         })

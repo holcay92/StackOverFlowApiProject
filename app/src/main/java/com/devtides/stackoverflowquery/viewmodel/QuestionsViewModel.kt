@@ -22,6 +22,10 @@ class QuestionsViewModel : ViewModel() {
         page++
         getQuestions()
     }
+    fun getFirstPage() {
+        page = 1
+        getQuestions()
+    }
 
   private fun getQuestions() {
        StackOverFlowService.api.getQuestions(1)
