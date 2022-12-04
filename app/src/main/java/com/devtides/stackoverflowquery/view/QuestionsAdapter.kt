@@ -10,7 +10,7 @@ import com.devtides.stackoverflowquery.model.convertTitle
 import com.devtides.stackoverflowquery.model.getDate
 import kotlinx.android.synthetic.main.question_layout.view.*
 
-class QuestionsAdapter(val questions: ArrayList<Question>): RecyclerView.Adapter<QuestionsAdapter.AdapterViewHolder>() {
+class QuestionsAdapter(val questions: ArrayList<Question>, val listener: QuestionClickListener): RecyclerView.Adapter<QuestionsAdapter.AdapterViewHolder>() {
 
     fun addQuestions(newQuestions: List<Question>) {
         val currentLength = questions.size
@@ -26,6 +26,7 @@ class QuestionsAdapter(val questions: ArrayList<Question>): RecyclerView.Adapter
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         AdapterViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.question_layout, parent, false)
+        ,listener
         )
 
     override fun getItemCount() = questions.size
@@ -36,7 +37,8 @@ class QuestionsAdapter(val questions: ArrayList<Question>): RecyclerView.Adapter
 
 
 
-    class AdapterViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    class AdapterViewHolder(view: View,val listener: QuestionClickListener): RecyclerView.ViewHolder(view) {
+        val layout = view.item_layout
         val title = view.item_title
         val score = view.item_score
         val date = view.item_date
@@ -44,6 +46,8 @@ class QuestionsAdapter(val questions: ArrayList<Question>): RecyclerView.Adapter
             title.text = convertTitle(question.title)
             score.text = question.score
             date.text = getDate(question.date)
+
+            layout.setOnClickListener { listener.onQuestionClicked(question) }
         }
     }
 

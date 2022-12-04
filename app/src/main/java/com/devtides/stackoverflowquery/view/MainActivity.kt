@@ -8,13 +8,14 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.devtides.stackoverflowquery.R
+import com.devtides.stackoverflowquery.model.Question
 import com.devtides.stackoverflowquery.viewmodel.QuestionsViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), QuestionClickListener {
 
-    private val questionsAdapter = QuestionsAdapter(arrayListOf())
+    private val questionsAdapter = QuestionsAdapter(arrayListOf(),this)
     private val viewModel: QuestionsViewModel by viewModels()
     private val lm = LinearLayoutManager(this)
 
@@ -75,5 +76,9 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    override fun onQuestionClicked(question: Question) {
+        startActivity(DetailActivity.getIntent(this, question))
     }
 }
