@@ -18,6 +18,8 @@ class DetailActivity : AppCompatActivity() {
         fun getIntent(context: Context, question: Question) =
             Intent(context, DetailActivity::class.java).putExtra(PARAM_QUESTION, question)
 
+
+
     }
     var question: Question? = null
 

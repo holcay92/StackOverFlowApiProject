@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), QuestionClickListener {
 
-    private val questionsAdapter = QuestionsAdapter(arrayListOf(),this)
+    private val questionsAdapter = QuestionsAdapter(arrayListOf(), this)
     private val viewModel: QuestionsViewModel by viewModels()
     private val lm = LinearLayoutManager(this)
 
