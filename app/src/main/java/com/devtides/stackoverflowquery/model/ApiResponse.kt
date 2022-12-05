@@ -66,7 +66,7 @@ data class Answer(
     val date: Long?
 ){
     override fun toString()=
-         "Answer: $answerId - ${ if(isAccepted== true)"ACCEPTED" else "NOT ACCEPTED"} - " +
+         "$answerId - ${ if(isAccepted== true)"ACCEPTED" else "NOT ACCEPTED"} - " +
                 " score = $score - date = ${getDate(date)}"
 
 }
