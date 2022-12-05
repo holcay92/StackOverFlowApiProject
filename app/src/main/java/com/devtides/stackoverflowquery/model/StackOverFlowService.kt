@@ -5,7 +5,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object StackOverFlowService {
 // retrofit is a library that helps us to make network calls
-// general structure of retrofit
+// we need to create a retrofit object
+
     private val BASE_URL = "https://api.stackexchange.com/"
 
     val api = Retrofit.Builder()

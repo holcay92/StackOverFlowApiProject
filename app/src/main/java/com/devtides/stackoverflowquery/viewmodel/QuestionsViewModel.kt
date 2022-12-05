@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.devtides.stackoverflowquery.model.Question
 import com.devtides.stackoverflowquery.model.ResponseWrapper
-import com.devtides.stackoverflowquery.model.StackOverFlowApi
 import com.devtides.stackoverflowquery.model.StackOverFlowService
 import retrofit2.Call
 import retrofit2.Callback

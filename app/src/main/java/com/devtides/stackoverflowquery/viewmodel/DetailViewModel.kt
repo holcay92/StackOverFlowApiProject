@@ -3,7 +3,6 @@ package com.devtides.stackoverflowquery.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.devtides.stackoverflowquery.model.Answer
-import com.devtides.stackoverflowquery.model.Question
 import com.devtides.stackoverflowquery.model.ResponseWrapper
 import com.devtides.stackoverflowquery.model.StackOverFlowService
 import retrofit2.Call
